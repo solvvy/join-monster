@@ -1,13 +1,15 @@
 import util from 'util'
 import assert from 'assert'
 import idx from 'idx'
-import { nest } from '@stem/nesthydrationjs'
+import createNestHydration from 'nesthydrationjs'
 import stringifySQL from './stringifiers/dispatcher'
 import resolveUnions from './resolve-unions'
 import deprecate from 'deprecate'
 const debug = require('debug')('join-monster')
 
 import defineObjectShape from './define-object-shape'
+
+const nest = createNestHydration().nest;
 
 export function emphasize(str, colorCode = 33) {
   return `\n\x1b[1;${colorCode}m${str}\x1b[0m\n`
